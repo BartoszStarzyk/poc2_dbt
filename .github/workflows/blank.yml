@@ -19,7 +19,7 @@ jobs:
       # SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PAT }} # Snowflake password is required if you aren't using OIDC
       SNOWFLAKE_DATABASE: DBT_STORE
       SNOWFLAKE_SCHEMA: PUBLIC
-      SNOWFLAKE_ROLE: ACCOUNTADMIN
+      SNOWFLAKE_ROLE: USERADMIN
 
     steps:
       - name: Check out repository code
