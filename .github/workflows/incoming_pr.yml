@@ -35,7 +35,6 @@ jobs:
       - name: Check Snowflake CLI Version
         run: snow --version
 
-      # The -x is shorthand for --temporary-connection
       - run: snow connection test -x
 
       # The --force setting creates the object or updates it if it already exists
