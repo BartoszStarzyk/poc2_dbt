@@ -1,21 +1,23 @@
 name: Snowflake OIDC
-on: workflow_dispatch
+on: [push]
 
 permissions:
- id-token: write
- contents: read
+  id-token: write  # Required for OIDC token generation
+  contents: read
 
 jobs:
- oidc-job:
-   runs-on: ubuntu-latest
-   environment: test
-   steps:
-     - name: Set up Snowflake CLI
-       uses: snowflakedb/snowflake-cli-action@v2.0
-       with:
-         use-oidc: true
-         cli-version: "3.14.0"
-     - name: test connection
-       env:
-         SNOWFLAKE_ACCOUNT: SCC50282
-       run: snow connection test -x
+  oidc-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Setup Snowflake cli
+        uses: snowflakedb/snowflake-cli-action@v2.0
+        with:
+          use-oidc: true
+          cli-version: "3.11"
+      - name: test connection
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+        run: snow connection test -x
