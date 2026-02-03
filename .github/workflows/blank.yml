@@ -2,8 +2,7 @@ name: TEST
 run-name: PR opened by ${{ github.actor }}
 on:
   workflow_dispatch:
-
-
+  
 permissions:
   contents: read
   id-token: write
@@ -12,16 +11,17 @@ jobs:
   run-snowflake-test-dbt-job:
     name: "Run on Incoming PR"
     runs-on: ubuntu-latest
-    environment: prod
+    environment: prod # Must match the OIDC subject's environment
     env:
       SNOWFLAKE_CLI_FEATURES_ENABLE_DBT: true
       SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
       # SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PAT }} # Snowflake password is required if you aren't using OIDC
-      SNOWFLAKE_DATABASE: new DBT_STORE_2
-      SNOWFLAKE_SCHEMA: PUBLIC
-      SNOWFLAKE_ROLE: PUBLIC
+      SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
+      SNOWFLAKE_SCHEMA: ${{ vars.SNOWFLAKE_SCHEMA }}
 
     steps:
+      # Check out repository code
+      # Gets the latest code from the incoming pull request
       - name: Check out repository code
         uses: actions/checkout@v4
 
@@ -33,15 +33,8 @@ jobs:
       - name: Check Snowflake CLI Version
         run: snow --version
 
+      # The -x is shorthand for --temporary-connection
       - run: snow connection test -x
-
-      
-      - name: Debug Snowflake session
-        run: |
-          snow sql -x -q "select current_user() as user, current_role() as role;"
-          snow sql -x -q "use database DBT_STORE;"
-          snow sql -x -q "use schema DBT_STORE.PUBLIC;"
-
 
       # The --force setting creates the object or updates it if it already exists
       # You can remove the "-- source" flag if your dbt_project.yml is at root of your repo
