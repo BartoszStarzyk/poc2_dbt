@@ -22,7 +22,6 @@ jobs:
       SNOWFLAKE_SCHEMA: ${{ vars.SNOWFLAKE_SCHEMA }}
 
     steps:
-      # Gets the latest code from the incoming pull request
       - name: Check out repository code
         uses: actions/checkout@v4
 
