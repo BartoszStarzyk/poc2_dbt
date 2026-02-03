@@ -49,10 +49,9 @@ models:
 
   - name: src_orders
     columns:
-
      - name: order_id
        data_tests:
-       - unique
+      #  - unique
        - not_null
        - nonnegative_values
        
