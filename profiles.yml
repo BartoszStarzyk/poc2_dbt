@@ -1,19 +1,19 @@
 dbt_workspace_poc_2:
-  outputs:
   target: dev
-  dev:
-    account: '_' # Put any value here, it will be overwritten by a GitHub repository secret
-    database: POC_2_DBT
-    schema: my_dev_schema
-    role: ACCOUNTADMIN # Use whichever role has USAGE on the database and schema
-    type: snowflake
-    warehouse: COMPUTE_WH # Replace with your active warehouse name, e.g., my_wh
-    user: '_' # Put any value here, it will be overwritten by a GitHub repository secret
-  prod:
-    account: '_' # Put any value here, it will be overwritten by a GitHub repository secret
-    database: POC_2_DBT_PROD
-    schema: my_prod_schema
-    role: ACCOUNTADMIN # Use whichever role has USAGE on the database and schema
-    type: snowflake
-    warehouse: COMPUTE_WH # Replace with your active warehouse name
-    user: '_' # Put any value here, it will be overwritten by a GitHub repository secret
+  outputs:
+    dev:
+      account: '_' # Put any value here, it will be overwritten by a GitHub repository secret
+      database: POC_2_DBT
+      schema: my_dev_schema
+      role: ACCOUNTADMIN # Use whichever role has USAGE on the database and schema
+      type: snowflake
+      warehouse: COMPUTE_WH # Replace with your active warehouse name, e.g., my_wh
+      user: '_' # Put any value here, it will be overwritten by a GitHub repository secret
+    prod:
+      account: '_' # Put any value here, it will be overwritten by a GitHub repository secret
+      database: POC_2_DBT_PROD
+      schema: my_prod_schema
+      role: ACCOUNTADMIN # Use whichever role has USAGE on the database and schema
+      type: snowflake
+      warehouse: COMPUTE_WH # Replace with your active warehouse name
+      user: '_' # Put any value here, it will be overwritten by a GitHub repository secret
