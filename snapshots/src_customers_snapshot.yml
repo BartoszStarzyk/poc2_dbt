@@ -1,0 +1,8 @@
+snapshots:
+  - name: src_customers_snapshot
+    relation: ref('src_customers')
+    config:
+      unique_key: customer_id
+      strategy: timestamp
+      updated_at: input_date
+      hard_deletes: invalidate

@@ -1,0 +1,96 @@
+models:
+  - name: order_addresses
+    columns:
+
+     - name: order_id
+       data_tests:
+         # is not unique because incorrect data was geenrated and multiple orders fit in the same range
+         # - unique
+         - not_null
+         - nonnegative_values
+
+     - name: order_date
+       data_tests:
+         - not_null
+
+     - name: address
+       data_tests:
+         - not_null
+         
+     - name: product_name
+       data_tests:
+        - not_null
+        
+
+
+  - name: src_customers
+    columns:
+
+     - name: customer_id
+       data_tests: 
+       - not_null
+       - nonnegative_values
+       
+     - name: first_name
+       data_tests: 
+       - not_null
+       
+     - name: last_name
+       data_tests: 
+       - not_null
+       
+     - name: address
+       data_tests: 
+       - not_null
+       
+     - name: input_date
+       data_tests: 
+       - not_null
+
+  - name: src_orders
+    columns:
+
+     - name: order_id
+       data_tests:
+       - unique
+       - not_null
+       - nonnegative_values
+       
+     - name: product_id
+       data_tests: 
+       - not_null
+       - nonnegative_values
+       
+     - name: customer_id
+       data_tests: 
+       - not_null
+       - nonnegative_values
+       
+     - name: quantity
+       data_tests: 
+       - not_null
+       - nonnegative_values
+       
+     - name: order_date
+       data_tests: 
+       - not_null
+  
+  - name: src_products
+    columns:
+
+     - name: product_id
+       data_tests: 
+       - not_null
+       - nonnegative_values
+       
+     - name: product_name
+       data_tests: 
+       - not_null
+       
+     - name: price
+       data_tests: 
+       - not_null
+       - nonnegative_values
+
+
+    

@@ -1,0 +1,17 @@
+sources:
+  - name: poc_2_dbt
+    schema: raw
+    tables:
+      - name: customers
+        identifier: raw_customers
+
+      - name: orders
+        identifier: raw_orders
+
+      - name: products
+        identifier: raw_products
+        # config:
+        #   loaded_at_field: date
+        #   freshness:
+        #     warn_after: {count: 1, period: hour}
+        #     error_after: {count: 24, period: hour}

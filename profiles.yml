@@ -1,0 +1,9 @@
+dbt_workspace_poc_2:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      role: ACCOUNTADMIN
+      warehouse: COMPUTE_WH
+      database: POC_2_DBT
+      schema: DEV
