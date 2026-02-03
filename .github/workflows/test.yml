@@ -1,5 +1,6 @@
-name: Snowflake OIDC
-on: workflow_dispatch:
+name: whatever
+on: 
+   workflow_dispatch:
 
 permissions:
   id-token: write  # Required for OIDC token generation
