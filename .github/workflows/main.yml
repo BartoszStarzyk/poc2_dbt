@@ -2,7 +2,7 @@ name: Snowflake OIDC
 on: [push]
 
 permissions:
-  id-token: write  # Required for OIDC token generation
+  id-token: write
   contents: read
 
 jobs:
