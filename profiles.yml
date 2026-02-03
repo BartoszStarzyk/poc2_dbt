@@ -1,6 +1,6 @@
-default:
-outputs:
-target: dev
+dbt_workspace_poc_2:
+  outputs:
+  target: dev
   dev:
     account: '_' # Put any value here, it will be overwritten by a GitHub repository secret
     database: POC_2_DBT
