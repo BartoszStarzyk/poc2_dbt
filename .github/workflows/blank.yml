@@ -34,6 +34,14 @@ jobs:
 
       - run: snow connection test -x
 
+      
+      - name: Debug Snowflake session
+        run: |
+          snow sql -x -q "select current_user() as user, current_role() as role;"
+          snow sql -x -q "use database DBT_STORE;"
+          snow sql -x -q "use schema DBT_STORE.PUBLIC;"
+
+
       # The --force setting creates the object or updates it if it already exists
       # You can remove the "-- source" flag if your dbt_project.yml is at root of your repo
       - name: Create a new tester dbt project object in ${{ vars.SNOWFLAKE_DATABASE }}.${{ vars.SNOWFLAKE_SCHEMA }}
