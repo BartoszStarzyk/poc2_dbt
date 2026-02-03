@@ -17,7 +17,7 @@ jobs:
       SNOWFLAKE_CLI_FEATURES_ENABLE_DBT: true
       SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
       # SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PAT }} # Snowflake password is required if you aren't using OIDC
-      SNOWFLAKE_DATABASE: DBT_STORE
+      SNOWFLAKE_DATABASE: new DBT_STORE_2
       SNOWFLAKE_SCHEMA: PUBLIC
       SNOWFLAKE_ROLE: PUBLIC
 
