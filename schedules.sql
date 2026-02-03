@@ -7,7 +7,7 @@ ALTER TASK IF EXISTS test_project SUSPEND;
 -- This would be an example scenario where you have a subset of the DAG that needs to be available early for business needs:
 CREATE OR ALTER TASK run_project_subset
   WAREHOUSE = COMPUTE_WH
-  SCHEDULE = '12 hours'
+  SCHEDULE = '3 hours'
   AS
       execute dbt project my_dbt_project_object_gh_action args='run --select raw_customers stg_customers customers --target prod';
 
